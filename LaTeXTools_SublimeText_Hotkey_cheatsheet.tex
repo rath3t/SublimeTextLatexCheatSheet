@@ -1,0 +1,215 @@
+% ------------------------------------------------ %
+% File              shortcuts.tex
+% Author            Troy
+% Description       TeXstudio shortcuts cheat sheet
+%                   Version 1.2b
+% Notes:            Inspired by:    https://tex.stackexchange.com/q/365456
+%                   See changelog:  https://pastebin.com/U7r8ug5t
+% How to use:   1. Place \rowcolor{impt} in front of rows you want to highlight
+%         2. The colour of 'impt' can be changed under `Table settings' -> \definecolor{}
+%         3. Add your own shortcuts in the last table.
+%            Note the shortcut macros defined under `Shortcuts for the shortcuts'.
+% Boring Stuff:   Feel free to use this anyway you like. :)
+% ------------------------------------------------ %
+
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+\usepackage[margin=1cm,landscape]{geometry}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{mdframed}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{multicol,booktabs,tabularx}
+
+
+
+% Shortcuts for the shortcuts
+\newcommand{\hlx}{\\\midrule}
+\newcommand{\cmd}[1]{\textbf{#1}}
+\newcommand{\tbl}{\textbackslash}
+\newcommand{\ctrlp}{Ctrl$+$}
+\newcommand{\ctrlshiftp}{Ctrl$+$Shift$+$}
+\newcommand{\ctrlaltp}{Ctrl$+$Alt$+$}
+\newcommand{\altp}{Alt$+$}
+\newcommand{\shiftp}{Shift$+$}
+\newcommand{\altshiftp}{Alt$+$Shift$+$}
+\newcommand*{\altcmd}{\hspace*{1em}\rule[.5ex]{3.5em}{.4pt}}
+
+% General document settings
+\setlength{\parindent}{0pt}
+\newcommand{\spacebtwtables}{%
+  \newline%
+  \vspace*{1em}%
+  \newline%
+}
+\pagestyle{empty}
+\sbox9{\scriptsize\libertine%
+  \cmd{\ctrlshiftp \#[0--9]}% Enter the longest command here
+}
+\sbox3{\scriptsize\libertine%
+  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa % Enter the longest command here
+}
+
+% Mdframed settings
+\global\mdfdefinestyle{mystyle}{%
+  linecolor=gray,linewidth=1pt,%
+  leftmargin=0mm,rightmargin=0mm,skipbelow=0mm,skipabove=0mm
+}
+
+% Table settings
+\renewcommand\arraystretch{1.2}
+\renewcommand{\aboverulesep}{0pt}
+\renewcommand{\belowrulesep}{0pt}
+\newcommand{\headbf}[1]{\Large\textbf{#1}}
+\definecolor{impt}{HTML}{E6E7E9}
+\newcolumntype{P}{>{\columncolor{white}[0pt][\tabcolsep]}X}
+\newcolumntype{L}{>{\columncolor{white}[\tabcolsep][0pt]}m{\wd9}}
+\newcolumntype{Q}{>{\columncolor{white}[\tabcolsep][0pt]}m{\wd3}}
+
+
+
+% \newcommand{\cop}[1]{%
+%     \begin{verbatim} \detokenize{#1} \end{verbatim}    } % cop := code output
+
+
+\begin{document}
+  \begin{multicols}{4}
+    % Header/Title
+    \begin{mdframed}[style=mystyle]
+      \begin{center}
+        \fontfamily{pnc}\selectfont
+        \large\scshape
+        	IBB~\LaTeX~SublimeTex  \\
+				Hotkeys \\\bigskip
+				\footnotesize Last updated: \today
+      \end{center}
+    \end{mdframed}
+    %
+    % Main body
+    \scriptsize
+    \bigskip
+% <File>
+    \begin{tabularx}{\linewidth}[th]{%
+        @{}P L@{}%
+      }
+      \multicolumn{2}{@{}l@{}}{\headbf{Sublime Text}} \\
+      \toprule
+      \rowcolor{impt}
+      open command prompt & \cmd{\ctrlshiftp P} \hlx
+      Goto line number    & \cmd{\ctrlp G} \hlx
+			Duplicate Line    & \cmd{\ctrlshiftp D} \hlx
+			Mark next occurence of selected text    & \cmd{\ctrlp D} \hlx
+			Select Line    & \cmd{\ctrlp L,L} \hlx
+			Delete Line    & \cmd{\ctrlshiftp K} \hlx
+			\rowcolor{impt}
+			select column for multiple editing    & \cmd{\ctrlaltp up,down} \hlx
+			select select content into brackets    & \cmd{\ctrlshiftp m} \hlx
+			insert line before   & \cmd{\ctrlshiftp enter} \hlx
+			insert line after   & \cmd{\ctrlp enter} \hlx
+			delete from cursor to end of line   & \cmd{\ctrlp K,K} \hlx
+			delete from cursor to start of line   & \cmd{\ctrlp K,backspace}  \hlx
+			upper case   & \cmd{\ctrlp K,U}  \hlx
+			lower case   & \cmd{\ctrlp K,L}  \hlx
+			paste and ident   & \cmd{\ctrlshiftp V}  \hlx
+			autocomplete    & \cmd{\ctrlp space}  \hlx
+			jump to matching brackets    & \cmd{\ctrlp M}  \hlx
+			close current tab    & \cmd{\ctrlp W}  \hlx
+			join lines   & \cmd{\ctrlp J} \\
+      \bottomrule
+    \end{tabularx}
+    \spacebtwtables
+% <Edit>
+    \begin{tabularx}{\linewidth}[th]{%
+        @{}P L@{}%
+      }
+      \multicolumn{2}{@{}l@{}}{\headbf{LaTexTools}} \\
+      \toprule
+     \rowcolor{impt}
+jump to/show labels    &  \cmd{\ctrlshiftp r,\ctrlp r}\hlx
+jump to anywhere    &  \cmd{\ctrlp l,\ctrlp j }\hlx
+jump to anywhere (mouse)    &  \cmd{\ctrlaltp click }\hlx
+\multicolumn{2}{c}{--w/wo marked text--} \hlx
+			\verb|\emph{text}|    & \cmd{\ctrlp l,\ctrlp e}\hlx
+			\verb|\textbf{text}|    & \cmd{\ctrlp l}, \cmd{\ctrlp b}\hlx
+			\verb|\underline{text}|    & \cmd{\ctrlp l}, \cmd{\ctrlp u}\hlx
+			\verb|\texttt{text}|    & \cmd{\ctrlp l}, \cmd{\ctrlp t}\hlx
+			wraps text in environment    & \cmd{\ctrlp l}, \cmd{\ctrlp n}\hlx
+			change the current environment    & \cmd{\ctrlp l}, \cmd{\ctrlshiftp n}\\
+      \bottomrule
+    \end{tabularx}
+    \spacebtwtables
+% <Idefix>
+    \begin{tabularx}{\linewidth}[th]{%
+        @{}P L@{}%
+      }
+      \multicolumn{2}{@{}l@{}}{\headbf{LaTeXYZ (in math env)}} \\
+      \toprule
+			\rowcolor{impt}
+			\verb|\ldots|    & \cmd{. , . , .} \hlx
+			\verb|\left(\right)|  & \cmd{( , (} \hlx
+			\verb|\left[\right]|  & \cmd{[ , [} \hlx
+			\verb|\left\{\right\}|  & \cmd{\{ , \{} \hlx
+			\verb|\langle \rangle|  & \cmd{<} \hlx
+			\verb|\left\langle\right\rangle|  & \cmd{< , <} \hlx
+			\verb|_{}|  & \verb|_,_| \hlx
+			\multicolumn{2}{c}{--with marked text--} \hlx
+			\verb|\frac{text}{}|  & \verb|/| \hlx
+			\verb|\bar{text}|  & \verb|_| \hlx
+			\verb|\overline{text}|  & \verb|_,_| \hlx
+			\verb|\hat{text}|  & \verb|^| \hlx
+			\verb|\widehat{text}|  & \verb|^,^|  \\
+      \bottomrule
+    \end{tabularx}
+    \spacebtwtables
+% <Tools>
+		\begin{tabularx}{\linewidth}[th]{%
+				@{}P L@{}%
+			}
+			\multicolumn{2}{@{}l@{}}{\headbf{Tools}} \\
+			\toprule
+			\rowcolor{impt}
+			Toogle spell check & \cmd{F6} \hlx
+			count words (needs Perl) & \cmd{\ctrlp l, w} \\
+			\bottomrule
+		\end{tabularx}
+    \spacebtwtables
+% <LaTeX>
+		\begin{tabularx}{\linewidth}[th]{%
+				@{}P Q@{}%
+			}
+			\multicolumn{2}{@{}l@{}}{\headbf{Misc}} \\
+			\toprule
+			\rowcolor{impt}
+			Snippets Folder  & \verb|/Packages/User/Snippets| \\
+			\bottomrule
+		\end{tabularx}
+    \spacebtwtables
+% <View>
+		\begin{tabularx}{\linewidth}[th]{%
+				@{}P L@{}%
+			}
+			\multicolumn{2}{@{}l@{}}{\headbf{View}} \\
+			\toprule
+			\rowcolor{impt}
+			number Column Layout   & \cmd{\altshiftp number}  \\
+			\bottomrule
+		\end{tabularx}
+    \spacebtwtables
+% <Own Shortcuts/Macros>
+    \begin{tabularx}{\linewidth}[th]{%
+        @{}P L@{}%
+      }
+      \multicolumn{2}{@{}l@{}}{\headbf{Packages}} \\
+      \toprule
+      Nice File Icons & A File Icon \hlx
+      \midrule
+      Nice File Icons & A File Icon \hlx
+      Testing example macro 2 & Fancy Word \\
+      \bottomrule
+    \end{tabularx}
+    \spacebtwtables
+  \end{multicols}
+\end{document}

@@ -1,0 +1,14 @@
+ {
+  "folders":
+  [
+    {
+      "path": "."
+    },
+
+  ],
+  "settings":
+  {
+    "TEXroot": "LaTeXTools_SublimeText_Hotkey_cheatsheet.tex",
+    "dictionary": "Packages/User/Dictionaries/English (American).dic"
+  }
+}
