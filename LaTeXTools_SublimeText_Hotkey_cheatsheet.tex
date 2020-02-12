@@ -22,8 +22,8 @@
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{mdframed}
 \usepackage[dvipsnames,table]{xcolor}
-\usepackage{multicol,booktabs,tabularx}
-
+\usepackage{booktabs,tabularx}
+\usepackage[colaction]{multicol}
 
 
 % Shortcuts for the shortcuts
@@ -47,13 +47,17 @@
 }
 \pagestyle{empty}
 \sbox9{\scriptsize\libertine%
-  \cmd{\ctrlaltp up,down}% Enter the longest command here
+  \cmd{\ctrlshiftp left/right}% Enter the longest command here
 }
 \sbox3{\scriptsize\libertine%
   aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa % Enter the longest command here
 }
 \sbox1{\scriptsize\libertine%
-  \cmd{\ctrlp l, w} % Enter the longest command here
+  \cmd{\ctrlaltp l} % Enter the longest command here
+}
+
+\sbox2{\scriptsize\libertine%
+  \cmd{projectENG} % Enter the longest command here
 }
 
 % Mdframed settings
@@ -72,6 +76,7 @@
 \newcolumntype{L}{>{\columncolor{white}[\tabcolsep][0pt]}m{\wd9}}
 \newcolumntype{Q}{>{\columncolor{white}[\tabcolsep][0pt]}m{\wd3}}
 \newcolumntype{H}{>{\columncolor{white}[\tabcolsep][0pt]}m{\wd1}}
+\newcolumntype{K}{>{\columncolor{white}[\tabcolsep][0pt]}m{\wd2}}
 
 
 
@@ -80,6 +85,7 @@
 
 
 \begin{document}
+
   \begin{multicols}{4}
     % Header/Title
     \begin{mdframed}[style=mystyle]
@@ -91,67 +97,71 @@
 				\footnotesize Last updated: \today
       \end{center}
     \end{mdframed}
-    %
-    % Main body
     \scriptsize
     \bigskip
-% <File>
-    \begin{tabularx}{\linewidth}[th]{%
-        @{}P L@{}%
-      }
-      \multicolumn{2}{@{}l@{}}{\headbf{Sublime Text}} \\
+    \begin{tabular*}{\columnwidth}{@{}p{3.7cm}l@{}}
+      \multicolumn{2}{@{}l@{}}{\headbf{General}} \\
       \toprule
-      \rowcolor{impt}
-      open command prompt & \cmd{\ctrlshiftp P} \hlx
-      Goto line number    & \cmd{\ctrlp G} \hlx
-			Duplicate Line    & \cmd{\ctrlshiftp D} \hlx
-			Mark next occurence of selected text    & \cmd{\ctrlp D} \hlx
-			Select Line    & \cmd{\ctrlp L,L} \hlx
-			Delete Line    & \cmd{\ctrlshiftp K} \hlx
-			\rowcolor{impt}
-			select column for multiple editing    & \cmd{\ctrlaltp up,down} \hlx
-			select select content into brackets    & \cmd{\ctrlshiftp m} \hlx
+      open command prompt & \cmd{\ctrlshiftp p} \hlx
+      Goto line number    & \cmd{\ctrlp g} \hlx
+			Duplicate Line    & \cmd{\ctrlshiftp d} \hlx
+			Mark next occurence of selected text    & \cmd{\ctrlp d} \hlx
+			Delete Line    & \cmd{\ctrlshiftp k} \hlx
 			insert line before   & \cmd{\ctrlshiftp enter} \hlx
 			insert line after   & \cmd{\ctrlp enter} \hlx
-			delete from cursor to end of line   & \cmd{\ctrlp K,K} \hlx
-			delete from cursor to start of line   & \cmd{\ctrlp K,backspace}  \hlx
-			upper case   & \cmd{\ctrlp K,U}  \hlx
-			lower case   & \cmd{\ctrlp K,L}  \hlx
-			paste and ident   & \cmd{\ctrlshiftp V}  \hlx
+			delete from cursor to end of line   & \cmd{\ctrlp k,k} \hlx
+			delete from cursor to start of line   & \cmd{\ctrlp k,backspace}  \hlx
+			upper case   & \cmd{\ctrlp k,u}  \hlx
+			lower case   & \cmd{\ctrlp k,l}  \hlx
+			Paste and match current indention   & \cmd{\ctrlshiftp v}  \hlx
 			autocomplete    & \cmd{\ctrlp space}  \hlx
-			jump to matching brackets    & \cmd{\ctrlp M}  \hlx
-			close current tab    & \cmd{\ctrlp W}  \hlx
-			join lines   & \cmd{\ctrlp J} \\
+			jump to matching brackets    & \cmd{\ctrlp m}  \hlx
+			close current tab    & \cmd{\ctrlp w}  \hlx
+      Move one word left/right     & \cmd{\ctrlp left/right}  \hlx
+			Join line below at end of current line   & \cmd{\ctrlp j} \hlx
+      % \rowcolor{impt}
+      \multicolumn{2}{@{}c@{}}{--selection--} \hlx
+      Select Line    & \cmd{\ctrlp l,l} \hlx
+      Select All    & \cmd{\ctrlp a} \hlx select column for multiple editing    & \cmd{\ctrlaltp up,down} \hlx
+      Extend selection one char left/right    & \cmd{\ctrlp left/right} \hlx
+      Extend selection one word left/right   & \cmd{\ctrlshiftp left/right} \hlx
+      select content in brackets    & \cmd{\ctrlshiftp m} \hlx
+      select column for multiple editing    & \cmd{\ctrlaltp up,down} \hlx
+      Keep expanding scope    & \cmd{\ctrlaltp space} \hlx
+      select column for multiple editing    & \cmd{\ctrlaltp up,down} \hlx
+      % \rowcolor{impt}
+      \multicolumn{2}{@{}c@{}}{--deletions--} \hlx
+      Delete word to the left    & \cmd{\ctrlp backspace} \hlx
+      Delete word to the right    & \cmd{\ctrlp del} \hlx
+      Del from cursor to beginning of line    & \cmd{\ctrlshiftp backspace} \hlx
+      Del from cursor to end  of line    & \cmd{\ctrlshiftp del} \\
       \bottomrule
-    \end{tabularx}
+    \end{tabular*}
     \spacebtwtables
-% <Edit>
-    \begin{tabularx}{\linewidth}[th]{%
-        @{}P L@{}%
-      }
+    \begin{tabular*}{\columnwidth}{@{}p{3.61cm}l@{}}
       \multicolumn{2}{@{}l@{}}{\headbf{LaTexTools}} \\
       \toprule
-     \rowcolor{impt}
+     % \rowcolor{impt}
 jump to/show labels    &  \cmd{\ctrlshiftp r,\ctrlp r}\hlx
 jump to anywhere    &  \cmd{\ctrlp l,\ctrlp j }\hlx
 jump to anywhere (mouse)    &  \cmd{\ctrlaltp click }\hlx
+\rowcolor{impt}
 \multicolumn{2}{c}{--w/wo marked text--} \hlx
-			\verb|\emph{text}|    & \cmd{\ctrlp l,\ctrlp e}\hlx
+			\verb|\begin{text}\end{text}|    & \cmd{\ctrlp l,e}\hlx
+      \verb|\emph{text}|    & \cmd{\ctrlp l,\ctrlp e}\hlx
 			\verb|\textbf{text}|    & \cmd{\ctrlp l}, \cmd{\ctrlp b}\hlx
 			\verb|\underline{text}|    & \cmd{\ctrlp l}, \cmd{\ctrlp u}\hlx
 			\verb|\texttt{text}|    & \cmd{\ctrlp l}, \cmd{\ctrlp t}\hlx
 			wraps text in environment    & \cmd{\ctrlp l}, \cmd{\ctrlp n}\hlx
 			change the current environment    & \cmd{\ctrlp l}, \cmd{\ctrlshiftp n}\\
       \bottomrule
-    \end{tabularx}
+    \end{tabular*}
     \spacebtwtables
-% <Idefix>
-    \begin{tabularx}{\linewidth}[th]{%
-        @{}P H@{}%
-      }
+% <Idefix>eq
+\begin{minipage}{\columnwidth}
+    \begin{tabular*}{\columnwidth}{@{}p{5.251cm}l@{}}
       \multicolumn{2}{@{}l@{}}{\headbf{LaTeXYZ (in math env)}} \\
       \toprule
-			\rowcolor{impt}
 			\verb|\ldots|    & \cmd{. , . , .} \hlx
 			\verb|\left(\right)|  & \cmd{( , (} \hlx
 			\verb|\left[\right]|  & \cmd{[ , [} \hlx
@@ -159,6 +169,8 @@ jump to anywhere (mouse)    &  \cmd{\ctrlaltp click }\hlx
 			\verb|\langle \rangle|  & \cmd{<} \hlx
 			\verb|\left\langle\right\rangle|  & \cmd{< , <} \hlx
 			\verb|_{}|  & \verb|_,_| \hlx
+      \verb|^{}|  & \verb|^,^| \hlx
+      % \rowcolor{impt}
 			\multicolumn{2}{c}{--with marked text--} \hlx
 			\verb|\frac{text}{}|  & \verb|/| \hlx
 			\verb|\bar{text}|  & \verb|_| \hlx
@@ -166,54 +178,66 @@ jump to anywhere (mouse)    &  \cmd{\ctrlaltp click }\hlx
 			\verb|\hat{text}|  & \verb|^| \hlx
 			\verb|\widehat{text}|  & \verb|^,^|  \\
       \bottomrule
-    \end{tabularx}
+    \end{tabular*}
+    \end{minipage}
     \spacebtwtables
 % <Tools>
-		\begin{tabularx}{\linewidth}[th]{%
-				@{}P H@{}%
-			}
+		\begin{tabular*}{\linewidth}{p{4.65cm}l}
 			\multicolumn{2}{@{}l@{}}{\headbf{Tools}} \\
 			\toprule
-			\rowcolor{impt}
 			Toogle spell check & \cmd{F6} \hlx
       Add references from Zotero & \cmd{F10} \hlx
-			count words (needs Perl) & \cmd{\ctrlp l, w} \\
+			count words (needs Perl) & \cmd{\ctrlp l, w} \hlx
+      BeautifyLaTeX (nice indent/align) & \cmd{\ctrlaltp l} \\
 			\bottomrule
-		\end{tabularx}
+		\end{tabular*}
     \spacebtwtables
 % <LaTeX>
-		\begin{tabularx}{\linewidth}[th]{%
-				@{}P Q@{}%
-			}
+		\begin{tabular*}{\linewidth}{ll}
 			\multicolumn{2}{@{}l@{}}{\headbf{Misc}} \\
 			\toprule
 			\rowcolor{impt}
 			Snippets Folder  & \verb|/Packages/User/Snippets| \\
 			\bottomrule
-		\end{tabularx}
+		\end{tabular*}
+    \spacebtwtables
+        \begin{tabular*}{\linewidth}{p{3cm}l}
+      \multicolumn{2}{@{}l@{}}{\headbf{Snippets}} \\
+      \toprule
+      % \rowcolor{impt}
+                   Description & \cmd{command} \\
+                   \midrule[0.3mm]
+             \verb|IBB_equation| & \cmd{equation} \hlx
+             \verb|IBB_English_Project| & \cmd{projectENG} \hlx
+             \verb|IBB_German_Project| & \cmd{projectDE} \hlx
+             \verb|IBB_align| & \cmd{align} \hlx
+             \verb|IBB_Bmatrix| & \cmd{bmatrix} \hlx
+             \verb|IBB_Itemize| & \cmd{itemize} \hlx
+             \verb|IBB_Enumerate| & \cmd{enumerate} \hlx
+             \verb|IBB_Table| & \cmd{table} \hlx
+             \verb|IBB_Figure| & \cmd{figure} \\
+      \bottomrule
+    \end{tabular*}
     \spacebtwtables
 % <View>
-		\begin{tabularx}{\linewidth}[th]{%
-				@{}P Q@{}%
-			}
+		\begin{tabular*}{\linewidth}{ll}
 			\multicolumn{2}{@{}l@{}}{\headbf{View}} \\
 			\toprule
-			\rowcolor{impt}
+			% \rowcolor{impt}
 			number Column Layout   & \cmd{\altshiftp number}  \\
 			\bottomrule
-		\end{tabularx}
+		\end{tabular*}
     \spacebtwtables
 % <Own Shortcuts/Macros>
-    \begin{tabularx}{\linewidth}[th]{%
-        @{}P L@{}%
-      }
+    \begin{tabular*}{\linewidth}{ll}
       \multicolumn{2}{@{}l@{}}{\headbf{Packages}} \\
       \toprule
-      Description & PackageName \hlx
+      Description & PackageName \\
+      \midrule[0.3mm]
       Nice File Icons & A File Icon \hlx
       show fancy synonyms & Fancy Word \\
       \bottomrule
-    \end{tabularx}
+    \end{tabular*}
     \spacebtwtables
   \end{multicols}
 \end{document}
