@@ -47,10 +47,13 @@
 }
 \pagestyle{empty}
 \sbox9{\scriptsize\libertine%
-  \cmd{\ctrlshiftp \#[0--9]}% Enter the longest command here
+  \cmd{\ctrlaltp up,down}% Enter the longest command here
 }
 \sbox3{\scriptsize\libertine%
   aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa % Enter the longest command here
+}
+\sbox1{\scriptsize\libertine%
+  \cmd{\ctrlp l, w} % Enter the longest command here
 }
 
 % Mdframed settings
@@ -68,6 +71,7 @@
 \newcolumntype{P}{>{\columncolor{white}[0pt][\tabcolsep]}X}
 \newcolumntype{L}{>{\columncolor{white}[\tabcolsep][0pt]}m{\wd9}}
 \newcolumntype{Q}{>{\columncolor{white}[\tabcolsep][0pt]}m{\wd3}}
+\newcolumntype{H}{>{\columncolor{white}[\tabcolsep][0pt]}m{\wd1}}
 
 
 
@@ -143,7 +147,7 @@ jump to anywhere (mouse)    &  \cmd{\ctrlaltp click }\hlx
     \spacebtwtables
 % <Idefix>
     \begin{tabularx}{\linewidth}[th]{%
-        @{}P L@{}%
+        @{}P H@{}%
       }
       \multicolumn{2}{@{}l@{}}{\headbf{LaTeXYZ (in math env)}} \\
       \toprule
@@ -166,12 +170,13 @@ jump to anywhere (mouse)    &  \cmd{\ctrlaltp click }\hlx
     \spacebtwtables
 % <Tools>
 		\begin{tabularx}{\linewidth}[th]{%
-				@{}P L@{}%
+				@{}P H@{}%
 			}
 			\multicolumn{2}{@{}l@{}}{\headbf{Tools}} \\
 			\toprule
 			\rowcolor{impt}
 			Toogle spell check & \cmd{F6} \hlx
+      Add references from Zotero & \cmd{F10} \hlx
 			count words (needs Perl) & \cmd{\ctrlp l, w} \\
 			\bottomrule
 		\end{tabularx}
@@ -189,7 +194,7 @@ jump to anywhere (mouse)    &  \cmd{\ctrlaltp click }\hlx
     \spacebtwtables
 % <View>
 		\begin{tabularx}{\linewidth}[th]{%
-				@{}P L@{}%
+				@{}P Q@{}%
 			}
 			\multicolumn{2}{@{}l@{}}{\headbf{View}} \\
 			\toprule
@@ -204,10 +209,9 @@ jump to anywhere (mouse)    &  \cmd{\ctrlaltp click }\hlx
       }
       \multicolumn{2}{@{}l@{}}{\headbf{Packages}} \\
       \toprule
+      Description & PackageName \hlx
       Nice File Icons & A File Icon \hlx
-      \midrule
-      Nice File Icons & A File Icon \hlx
-      Testing example macro 2 & Fancy Word \\
+      show fancy synonyms & Fancy Word \\
       \bottomrule
     \end{tabularx}
     \spacebtwtables
